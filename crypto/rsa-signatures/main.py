@@ -1,6 +1,9 @@
+import base64
 import json
 import math
 import secrets
+import string
+from urllib.parse import quote as url_quote
 from flask import Flask, request, make_response, redirect, url_for
 from secret_data import rsa_key
 
@@ -41,6 +44,28 @@ def verify(message: bytes, signature: bytes) -> bool:
     return m == mm
 
 
+def json_to_cookie(j: str) -> str:
+    """Encode json data in a cookie-friendly way using base64."""
+    # The JSON data is a string -> encode it into bytes
+    json_as_bytes = j.encode()
+    # base64-encode the bytes
+    base64_as_bytes = base64.b64encode(json_as_bytes, altchars=b'-_')
+    # b64encode returns bytes again, but we need a string -> decode it
+    base64_as_str = base64_as_bytes.decode()
+    return base64_as_str
+
+
+def cookie_to_json(base64_as_str: str) -> str:
+    """Decode json data stored in a cookie-friendly way using base64."""
+    # Check that the input looks like base64 data
+    assert all(char in (string.ascii_letters + string.digits + '-_=') for char in base64_as_str), \
+            f"input '{base64_as_str}' is no valid base64"
+    # decode the base64 data
+    json_as_bytes = base64.b64decode(base64_as_str, altchars=b'-_')
+    # b64decode returns bytes, we want string -> decode it
+    json_as_str = json_as_bytes.decode()
+    return json_as_str
+
 
 @app.route('/')
 def index():
@@ -61,8 +86,10 @@ def grade():
     """Grade student's work and store the grade in a cookie."""
     if 'grade' in request.cookies:  # there is a grade cookie, try to load and verify it
         try:
+            # decode the base 64 encoded cookie from the request
+            c = cookie_to_json(request.cookies.get('grade'))
             # deserialize the JSON object which we expect in the cookie
-            j = json.loads(request.cookies.get('grade'))
+            j = json.loads(c)
             # decode the hexadecimal encoded byte strings
             msg = bytes.fromhex(j['msg'])
             signature = bytes.fromhex(j['signature'])
@@ -85,10 +112,12 @@ def grade():
         # serialize message and signature into a JSON object; for the byte
         # strings we use hexadecimal encoding
         j = json.dumps({'msg': msg.hex(), 'signature': signature.hex()})
+        # encode the json data cookie-friendly using base 64
+        c = json_to_cookie(j)
         # create a response object
         response = make_response('<p>Here is your grade, and take a cookie!</p>')
         # and store the created JSON object into a cookie
-        response.set_cookie('grade', j)
+        response.set_cookie('grade', c)
         return response
 
 
@@ -97,8 +126,10 @@ def grade():
 def quote():
     """Show a quote to good students."""
     try:
+        # decode the base 64 encoded cookie from the request
+        c = cookie_to_json(request.cookies.get('grade'))
         # deserialize the JSON object which we expect in the cookie
-        j = json.loads(request.cookies.get('grade'))
+        j = json.loads(c)
         # decode the hexadecimal encoded byte strings
         msg = bytes.fromhex(j['msg'])
         signature = bytes.fromhex(j['signature'])
