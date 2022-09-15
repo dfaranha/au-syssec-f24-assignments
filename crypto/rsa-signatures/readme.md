@@ -1,7 +1,5 @@
 # RSA Signatures
 
-## Your Task
-
 ### Task 2: Exploiting Textbook RSA Signatures
 
 You are given the source code of a simple website that a professor has created
