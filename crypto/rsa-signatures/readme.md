@@ -34,11 +34,11 @@ cryptosystem is consistent and able to verify its own signatures.
 
 In your implementation, you should target a security level of 128 bits, i.e.,
 use RSA moduli of size 3072 bits.  You are allowed to use library functions
-such as random number generators and mathematical subroutines (of course you
+such as random number generators and mathematical subroutines to generate primes (of course you
 cannot just wrap an existing library for RSA), but you need to document and
 justify you decisions with respect to security.  Especially, be careful when
 selecting the random number generator for key generation, as to avoid the
-pitfalls discussed in class. If encoding/decoding presents a challenge, you
+pitfalls discussed in class. If encoding/decoding of messages presents a challenge, you
 can reuse existing code as well, or read the [IEEE P1363 specification](https://web.archive.org/web/20170810025803/http://grouper.ieee.org/groups/1363/P1363a/contributions/pss-submission.pdf) for reference.
 For reference, the German Wikipedia has some [good pictures](https://de.wikipedia.org/wiki/Probabilistic_Signature_Scheme) of the RSA-PSS encoding/decoding functions.
 
