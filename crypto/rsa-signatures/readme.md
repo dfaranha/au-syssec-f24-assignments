@@ -13,8 +13,8 @@ Your task is to obtain a signed message stating you got a 12, so that you can
 receive a quote.  To this end, you can use the given API and the malleability
 properties of plain, textbook RSA.
 
-We plan to host a version of the website later on.  To get started with the
-task, you can host a local version on your own machine (see below).
+To get started with the task, you can host a local version on your own machine (see below).
+Afterwards, you can attack a version of the website hosted [here](https://cbc-rsa.syssec.dk:8001).
 
 
 ### Task 3: Implementing RSA-PSS
