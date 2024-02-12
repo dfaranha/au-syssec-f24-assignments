@@ -15,8 +15,8 @@ This requires you to exploit the properties of the CBC mode of encryption,
 together with the fact that the service outputs helpful error messages in case
 something goes wrong. A very helpful tutorial to CBC padding oracle attacks can be found [here](https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles), and additional information about how to _encrypt_ using them can be found on [Wikipedia](https://en.wikipedia.org/wiki/Padding_oracle_attack).
 
-We plan to host a version of the website later on.  To get started with the
-task, you can host a local version on your own machine (see below) and use it as training ground.
+To get started with the task, you can host a local version on your own machine (see below) and use it as training ground.
+Afterwards, you can attack a version of the website hosted [here](https://cbc-rsa.syssec.dk:8000).
 
 NB: This is of course not a good authentication method, but rather a somewhat
 artificial example demonstrating the problems of unauthenticated symmetric
