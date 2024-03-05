@@ -36,4 +36,4 @@ You are not supposed to write your own TLS/SSL implementation and a library shou
 
 ## Logistics:
 
-Your source code and binaries should be submitted through Brightspace, in groups of at most 3 students. Please including compile and usage instructions. The software package should be followed by a single short report (up to 5 pages, free format) describing your design decisions for the multiple parts and documenting the experimental evidence requested above. Deadline is 31/10/2022.
+Your source code and binaries should be submitted through Brightspace, in groups of at most 3 students. Please including compile and usage instructions. The software package should be followed by a single short report (up to 5 pages, free format) describing your design decisions for the multiple parts and documenting the experimental evidence requested above. Deadline is 27/03/2024.
