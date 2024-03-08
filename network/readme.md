@@ -8,6 +8,8 @@ The assignment has three parts, covering both constructive and destructive aspec
 
 For this part, you will need to have some familiarity with the IP protocol to write low-level networking code using a library. Suggestions are the `libnet/libpcap` library in the C programming language or the equivalent `socket` package in Python.
 
+We assume the following scenario. A whistleblower inside a network needs to transmit sensitive information to the outside, but without being detected by a draconian firewall. The firewall is configured to not allow much traffic to pass, but the system administrator has allowed some types of ICMP packets to go through because they can be used for debugging purposes. Our whistleblower has then decided to send non-standard ICMP packets containing encrypted data, in hope they can claim software error and plausibly deny the transmission in case they are detected.
+
 The objective of this task is to to implement an one-way encrypted covert channel using the [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) (Internet Control Message Protocol) protocol.
 Communication is one-way to follow the typical use case of covert channels for _exfiltration_ of sensitive data.
 ICMP is an error-reporting protocol that network devices use to inform of error messages to the source IP address when network problems prevent an IP packet to be delivered.
