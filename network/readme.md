@@ -17,6 +17,8 @@ The most familiar contact we have with the ICMP protocol is the `ping` tool usin
 
 You will implement client/server programs to exchange encrypted covert channel through the network. For this, use ICMP messages with type `47` (among the reserved numbers). The client program should receive a destination IP address from the command-line to transmit messages and wait for input from the keyboard at the client-side. The server program should listen to the network for such messages and print them in the console as they arrive. For encryption, you are free to use a preshared symmetric key to protect the transmitted payload. Choose algorithms and modes of operation wisely.
 
+![Screenshot of a possible solution](icmp-covert-channel.png)
+
 ### 2. Throttling TCP connections
 
 For this part, you will need to have some familiarity with the TCP protocol to write low-level networking code using a library. Suggestions again are the `libnet/libpcap` library in the C programming language or the equivalent `Scapy` package in Python.
