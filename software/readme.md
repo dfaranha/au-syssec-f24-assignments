@@ -11,5 +11,5 @@ In this task, you will study and reproduce a working local or remote exploit aga
 
 ## Logistics:
 
-Submit a short report (up to 7 pages, 12-point font, double-column format) detailing your observations, with due date on 28/04/2023. In your report, document the threat model in which the vulnerability can be exploited, the security properties that were violated and explain how the vulnerability was fixed.
+Submit a short report (up to 7 pages, 12-point font, double-column format) detailing your observations, with due date on 29/04/2024. In your report, document the threat model in which the vulnerability can be exploited, the security properties that were violated and explain how the vulnerability was fixed.
 The work is in groups of at most 3 students and should be submitted within Brightspace. For the larger groups, please consider that you have more hands and attempt to be more ambitious in terms of scope and target.
